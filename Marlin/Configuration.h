@@ -443,8 +443,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // default settings
 // 50.85 for 1/32, 25.43 for 1/16
 // Calc your own values using http://calculator.josefprusa.cz
-// MXL    20tooth = 157.64            22tooth, 62tooth `50.85, M8screw, Wades-extruder`= 760*2.2, Direct = 320
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {143.30,  157.64,   5120,    760*2.2}  // default steps per unit for Ultimaker
+// MXL    20tooth = 157.64            22tooth, 62tooth `50.85, M8screw, Wades-extruder`= 760*2.2, Direct = 320, BulldogXL = 495
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {143.30,  157.64,   5120,    495}  // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {900,900,200,100}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 

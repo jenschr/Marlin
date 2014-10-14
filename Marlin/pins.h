@@ -2426,7 +2426,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
     #define encrot1 2
     #define encrot2 3
     #define encrot3 1
-#endif
+  #endif
 #endif //ULTRA_LCD
 
 #endif
@@ -2476,7 +2476,7 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define E2_ENABLE_PIN 22
 
  #define SDPOWER -1
- #define SDSS 53
+ #define SDSS 42 // onboard SD card reader = 53, SS=CS on the SD
  #define LED_PIN 13
 
  #define FAN_PIN 7
@@ -2521,10 +2521,9 @@ DaveX plan for Teensylu/printrboard-type pinouts (ref teensylu & sprinter) for a
  #define LCD_PINS_D6 32
  #define LCD_PINS_D7 33
 
-
  //buttons are directly attached using keypad
- #define BTN_EN1 61
- #define BTN_EN2 59
+ #define BTN_EN1 61 // A7
+ #define BTN_EN2 59 // A5
  #define BTN_ENC 43 //the click
 
  #define BLEN_C 2

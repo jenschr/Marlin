@@ -35,7 +35,6 @@
     #include "qr_solve.h"
   #endif
 #endif // ENABLE_AUTO_BED_LEVELING
-
 #include "ultralcd.h"
 #include "planner.h"
 #include "stepper.h"

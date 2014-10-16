@@ -143,8 +143,8 @@
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 10  // (seconds)
-#define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
+#define TEMP_RESIDENCY_TIME 5  // (seconds)
+#define TEMP_HYSTERESIS 5       // (degC) range of +/- temperatures considered "close" to the target one
 #define TEMP_WINDOW     1       // (degC) Window around target to start the residency timer x degC early.
 
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
@@ -158,9 +158,9 @@
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-#define HEATER_0_MAXTEMP 300
-#define HEATER_1_MAXTEMP 300
-#define HEATER_2_MAXTEMP 300
+#define HEATER_0_MAXTEMP 290
+#define HEATER_1_MAXTEMP 290
+#define HEATER_2_MAXTEMP 290
 #define BED_MAXTEMP 150
 
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
@@ -180,7 +180,7 @@
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port.
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
-  #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
+  #define PID_FUNCTIONAL_RANGE 30 // If the temperature difference between the target temperature and the actual temperature
                                   // is more then PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
   #define PID_INTEGRAL_DRIVE_MAX 255  //limit for the integral term
   #define K1 0.95 //smoothing factor within the PID
@@ -188,9 +188,9 @@
 
 // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 // Ultimaker
-    #define  DEFAULT_Kp 22.2
-    #define  DEFAULT_Ki 1.08
-    #define  DEFAULT_Kd 114
+    #define  DEFAULT_Kp 14.23
+    #define  DEFAULT_Ki 2.33
+    #define  DEFAULT_Kd 21.68
 
 // MakerGear
 //    #define  DEFAULT_Kp 7.0
@@ -201,6 +201,11 @@
 //    #define  DEFAULT_Kp 63.0
 //    #define  DEFAULT_Ki 2.25
 //    #define  DEFAULT_Kd 440
+
+// BAM 3D printer
+//    #define  DEFAULT_Kp 48.52
+//    #define  DEFAULT_Ki 8.23
+//    #define  DEFAULT_Kd 71.55
 #endif // PIDTEMP
 
 // Bed Temperature Control
@@ -444,7 +449,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // 50.85 for 1/32, 25.43 for 1/16
 // Calc your own values using http://calculator.josefprusa.cz
 // MXL    20tooth = 157.64            22tooth, 62tooth `50.85, M8screw, Wades-extruder`= 760*2.2, Direct = 320, BulldogXL = 495
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {143.30,  157.64,   5120,    495}  // default steps per unit for Ultimaker
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {143.30,  157.64,   5120,    520*2}  // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {900,900,200,100}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 

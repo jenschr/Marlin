@@ -187,6 +187,11 @@ extern volatile uint16_t buttons;  //an extended version of the last checked but
   #include <LiquidCrystal_SR.h>
   #define LCD_CLASS LiquidCrystal_SR
   LCD_CLASS lcd(SR_DATA_PIN, SR_CLK_PIN);
+// OLED
+#elif defined(OLED_SSD1311)
+  #include <OLedI2C.h>
+  #define LCD_CLASS OLedI2C
+  LCD_CLASS lcd;
 
 #else
   // Standard directly connected LCD implementations
@@ -317,6 +322,8 @@ static void lcd_implementation_init()
       lcd.init();
       lcd.backlight();
     
+#elif defined(OLED_SSD1311)
+      lcd.begin(LCD_I2C_ADDRESS);
 #else
     lcd.begin(LCD_WIDTH, LCD_HEIGHT);
 #endif

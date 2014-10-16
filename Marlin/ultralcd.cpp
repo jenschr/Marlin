@@ -7,6 +7,7 @@
 #include "temperature.h"
 #include "stepper.h"
 #include "ConfigurationStore.h"
+#include "OLedI2C.h"
 
 int8_t encoderDiff; /* encoderDiff is updated from interrupt context and added to encoderPosition every LCD update */
 
@@ -18,7 +19,6 @@ int plaPreheatFanSpeed;
 int absPreheatHotendTemp;
 int absPreheatHPBTemp;
 int absPreheatFanSpeed;
-
 
 #ifdef ULTIPANEL
 static float manual_feedrate[] = MANUAL_FEEDRATE;
@@ -32,10 +32,10 @@ typedef void (*menuFunc_t)();
 uint8_t lcd_status_message_level;
 char lcd_status_message[LCD_WIDTH+1] = WELCOME_MSG;
 
-#ifdef DOGLCD
-#include "dogm_lcd_implementation.h"
+#if defined(DOGLCD)
+    #include "dogm_lcd_implementation.h"
 #else
-#include "ultralcd_implementation_hitachi_HD44780.h"
+    #include "ultralcd_implementation_hitachi_HD44780.h"
 #endif
 
 /** forward declarations **/
@@ -927,7 +927,7 @@ static void lcd_sd_updir()
 void lcd_sdcard_menu()
 {
     if (lcdDrawUpdate == 0 && LCD_CLICKED == 0)
-        return;	// nothing to do (so don't thrash the SD card)
+        return; // nothing to do (so don't thrash the SD card)
     uint16_t fileCnt = card.getnrfilenames();
     START_MENU();
     MENU_ITEM(back, MSG_MAIN, lcd_main_menu);
@@ -1035,39 +1035,39 @@ menu_edit_type(float, float52, ftostr52, 100)
 menu_edit_type(unsigned long, long5, ftostr5, 0.01)
 
 #ifdef REPRAPWORLD_KEYPAD
-	static void reprapworld_keypad_move_z_up() {
+    static void reprapworld_keypad_move_z_up() {
     encoderPosition = 1;
     move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
-		lcd_move_z();
+        lcd_move_z();
   }
-	static void reprapworld_keypad_move_z_down() {
+    static void reprapworld_keypad_move_z_down() {
     encoderPosition = -1;
     move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
-		lcd_move_z();
+        lcd_move_z();
   }
-	static void reprapworld_keypad_move_x_left() {
+    static void reprapworld_keypad_move_x_left() {
     encoderPosition = -1;
     move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
-		lcd_move_x();
+        lcd_move_x();
   }
-	static void reprapworld_keypad_move_x_right() {
+    static void reprapworld_keypad_move_x_right() {
     encoderPosition = 1;
     move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
-		lcd_move_x();
-	}
-	static void reprapworld_keypad_move_y_down() {
+        lcd_move_x();
+    }
+    static void reprapworld_keypad_move_y_down() {
     encoderPosition = 1;
     move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
-		lcd_move_y();
-	}
-	static void reprapworld_keypad_move_y_up() {
-		encoderPosition = -1;
-		move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
+        lcd_move_y();
+    }
+    static void reprapworld_keypad_move_y_up() {
+        encoderPosition = -1;
+        move_menu_scale = REPRAPWORLD_KEYPAD_MOVE_STEP;
     lcd_move_y();
-	}
-	static void reprapworld_keypad_move_home() {
-		enquecommand_P((PSTR("G28"))); // move all axis home
-	}
+    }
+    static void reprapworld_keypad_move_home() {
+        enquecommand_P((PSTR("G28"))); // move all axis home
+    }
 #endif
 
 /** End of menus **/
@@ -1207,29 +1207,29 @@ void lcd_update()
     if (lcd_next_update_millis < millis())
     {
 #ifdef ULTIPANEL
-		#ifdef REPRAPWORLD_KEYPAD
-        	if (REPRAPWORLD_KEYPAD_MOVE_Z_UP) {
-        		reprapworld_keypad_move_z_up();
-        	}
-        	if (REPRAPWORLD_KEYPAD_MOVE_Z_DOWN) {
-        		reprapworld_keypad_move_z_down();
-        	}
-        	if (REPRAPWORLD_KEYPAD_MOVE_X_LEFT) {
-        		reprapworld_keypad_move_x_left();
-        	}
-        	if (REPRAPWORLD_KEYPAD_MOVE_X_RIGHT) {
-        		reprapworld_keypad_move_x_right();
-        	}
-        	if (REPRAPWORLD_KEYPAD_MOVE_Y_DOWN) {
-        		reprapworld_keypad_move_y_down();
-        	}
-        	if (REPRAPWORLD_KEYPAD_MOVE_Y_UP) {
-        		reprapworld_keypad_move_y_up();
-        	}
-        	if (REPRAPWORLD_KEYPAD_MOVE_HOME) {
-        		reprapworld_keypad_move_home();
-        	}
-		#endif
+        #ifdef REPRAPWORLD_KEYPAD
+            if (REPRAPWORLD_KEYPAD_MOVE_Z_UP) {
+                reprapworld_keypad_move_z_up();
+            }
+            if (REPRAPWORLD_KEYPAD_MOVE_Z_DOWN) {
+                reprapworld_keypad_move_z_down();
+            }
+            if (REPRAPWORLD_KEYPAD_MOVE_X_LEFT) {
+                reprapworld_keypad_move_x_left();
+            }
+            if (REPRAPWORLD_KEYPAD_MOVE_X_RIGHT) {
+                reprapworld_keypad_move_x_right();
+            }
+            if (REPRAPWORLD_KEYPAD_MOVE_Y_DOWN) {
+                reprapworld_keypad_move_y_down();
+            }
+            if (REPRAPWORLD_KEYPAD_MOVE_Y_UP) {
+                reprapworld_keypad_move_y_up();
+            }
+            if (REPRAPWORLD_KEYPAD_MOVE_HOME) {
+                reprapworld_keypad_move_home();
+            }
+        #endif
         if (abs(encoderDiff) >= ENCODER_PULSES_PER_STEP)
         {
             lcdDrawUpdate = 1;
@@ -1341,7 +1341,7 @@ void lcd_buttons_update()
           WRITE(SHIFT_CLK,LOW);
       }
       buttons_reprapworld_keypad=~newbutton_reprapworld_keypad; //invert it, because a pressed switch produces a logical 0
-	#endif
+    #endif
 #else   //read it from the shift register
     uint8_t newbutton=0;
     WRITE(SHIFT_LD,LOW);

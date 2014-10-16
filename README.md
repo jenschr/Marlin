@@ -10,7 +10,7 @@ Please do not use this code in products (3D printers, CNC etc) that are closed s
 
 About this fork
 ===============
-This fork is setup to work with the Mendel-based design illustrated here http://forum.makeblock.cc/t/3d-printer-build-log/537/ that is based on Makeblock aluminium extrusions, Megatronics 2 electronics and the e3D all metal hotend. As this is to be my main printer, I'll update this against Erik's original branch (as required).
+This fork is setup to work with the BAM 3D printer (Big Alu Mendel) http://reprap.org/wiki/BAM that is based on Makeblock aluminium extrusions, Megatronics 2 electronics and the Hexagon all metal hotend. I'll update this fork against Erik's original branch (as required).
 
 Quick Information
 ===================

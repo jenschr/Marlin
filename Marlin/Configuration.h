@@ -308,7 +308,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Disables axis when it's not being used.
 #define DISABLE_X false
 #define DISABLE_Y false
-#define DISABLE_Z true
+#define DISABLE_Z false
 #define DISABLE_E false // For all extruders
 #define DISABLE_INACTIVE_EXTRUDER true //disable only inactive extruders and keep active extruder enabled
 
@@ -445,15 +445,23 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
 #define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
 
-// default settings
-// 50.85 for 1/32, 25.43 for 1/16
-// Calc your own values using http://calculator.josefprusa.cz
-// MXL    20tooth = 157.64            22tooth, 62tooth `50.85, M8screw, Wades-extruder`= 760*2.2, Direct = 320, BulldogXL = 495
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {143.30,  157.64,   5120,    520*2}  // default steps per unit for Ultimaker
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {900,900,200,100}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+// Motor/belt/screw settings
+// Calc your own values using http://prusaprinters.org/calculator/
+// BAMM uses MXL belt with 2.03mm pitch and DRV8825 1/32 microstepping
+// 18t = 175.15  (t= tooth)
+// 20t = 157.64
+// 22t = 143.3
+// 32t = 98.52
+// 62t = `50.85
 
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
+// 1.25mm (M8) screw for Z = 5120
+// 1.5mm leadscrew for Z = 4266.67
+
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {98.52, 157.64, 4266.67, 475*2}  // X, Y, Z, E 495 = default ESteps for BulldogXL (the 2x is for 1/32 stepping with DRV8825)
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
+#define DEFAULT_MAX_ACCELERATION      {1500,1500,100,500}    // X, Y, Z, E maximum start speed for accelerated moves. Defaults 9000,9000,100,5000
+//                          old values  900, 900,200,100
+#define DEFAULT_ACCELERATION          1500    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
@@ -463,7 +471,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // #define EXTRUDER_OFFSET_Y {0.0, 5.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
 // The speed change that does not require acceleration (i.e. the software might assume it can be done instantaneously)
-#define DEFAULT_XYJERK                20.0    // (mm/sec)
+#define DEFAULT_XYJERK                10.0    // (mm/sec)
 #define DEFAULT_ZJERK                 0.4     // (mm/sec)
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 

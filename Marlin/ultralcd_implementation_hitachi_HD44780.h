@@ -189,7 +189,7 @@ extern volatile uint16_t buttons;  //an extended version of the last checked but
   LCD_CLASS lcd(SR_DATA_PIN, SR_CLK_PIN);
 // OLED
 #elif defined(OLED_SSD1311)
-  #include <OLedI2C.h>
+  #include "OLedI2C.h"
   #define LCD_CLASS OLedI2C
   LCD_CLASS lcd;
 

@@ -443,7 +443,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {120*60, 120*60, 10*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {120*60, 120*60, 4*60, 0}  // set the homing speeds (mm/min)
 
 // Motor/belt/screw settings
 // Calc your own values using http://prusaprinters.org/calculator/
@@ -458,7 +458,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Flex3Drive = 1900
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {175.15,  157.64,   4266.67,    1900}  // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {500,500, 25, 12}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {900,500,900,900}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_ACCELERATION      {900,500, 10,900}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          150    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  150   // X, Y, Z and E max acceleration in mm/s^2 for retracts

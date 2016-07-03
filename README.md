@@ -1,20 +1,12 @@
-<<<<<<< HEAD
 ==========================
 Marlin 3D Printer Firmware
 ==========================
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/2224/badge.svg)](https://scan.coverity.com/projects/2224)
-
-Marlin has a GPL license because I believe in open development.
-Please do not use this code in products (3D printers, CNC etc) that are closed source or are crippled by a patent.
-=======
 # Marlin 3D Printer Firmware
 <img align="top" width=175 src="Documentation/Logo/Marlin%20Logo%20GitHub.png" />
  Additional documentation can be found in [The Marlin Wiki](https://github.com/MarlinFirmware/Marlin/wiki).
->>>>>>> refs/remotes/MarlinFirmware/RC
 
 ## Release Candidate -- Marlin 1.1.0-RC6 - 24 April 2016
 
-<<<<<<< HEAD
 About this fork
 ===============
 This fork is setup to work with the BAM 3D printer (Big Alu Mendel) http://reprap.org/wiki/BAM that is based on Makeblock aluminium extrusions, Megatronics 2 electronics and the Hexagon all metal hotend. I'll update this fork against Erik's original branch (as required).
@@ -22,9 +14,6 @@ This fork is setup to work with the BAM 3D printer (Big Alu Mendel) http://repra
 Quick Information
 ===================
 This RepRap firmware is a mashup between <a href="https://github.com/kliment/Sprinter">Sprinter</a>, <a href="https://github.com/simen/grbl/tree">grbl</a> and many original parts.
-=======
-__Not for production use – use with caution!__
->>>>>>> refs/remotes/MarlinFirmware/RC
 
 You can download earlier versions of Marlin on the [Releases page](https://github.com/MarlinFirmware/Marlin/releases). (The latest "stable" release of Marlin is 1.0.2-1.)
 
@@ -104,7 +93,6 @@ The current Marlin dev team consists of:
  - Bernhard Kubicek [@bkubicek]
  - Roxanne Neufeld [@Roxy-3DPrintBoard] - English
 
-<<<<<<< HEAD
 If your hardware supports it, you can build yourself a LCD-CardReader+Click+encoder combination. It will enable you to realtime tune temperatures,
 accelerations, velocities, flow rates, select and print files from the SD card, preheat, disable the steppers, and do other fancy stuff.
 One working hardware is documented here: http://www.thingiverse.com/thing:12663
@@ -341,13 +329,11 @@ and then lifted when traveling from first to second and second to third point by
 All values are in mm as usual. 
 
 That's it.. enjoy never having to calibrate your Z endstop neither leveling your bed by hand anymore ;-)
-=======
 More features have been added by:
   - Alberto Cotronei [@MagoKimbra]
   - Lampmaker,
   - Bradley Feldman,
   - and others...
->>>>>>> refs/remotes/MarlinFirmware/RC
 
 ## License
 
